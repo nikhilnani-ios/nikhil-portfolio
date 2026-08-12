@@ -1,0 +1,26 @@
+server:
+  port: ${PORT:8080}
+  compression:
+    enabled: true
+
+spring:
+  application:
+    name: portfolio-api
+  jackson:
+    default-property-inclusion: non_null
+
+portfolio:
+  # Origins allowed to call the API. Override in prod with PORTFOLIO_ALLOWED_ORIGINS.
+  allowed-origins: ${PORTFOLIO_ALLOWED_ORIGINS:http://localhost:5173,http://127.0.0.1:5173}
+  # Records/day claim that drives the live throughput stream.
+  records-per-day: 22000000
+  email:
+    api-key: ${RESEND_API_KEY:}
+    to: ${PORTFOLIO_CONTACT_EMAIL:nikhiljavvaji9@gmail.com}
+    from: ${PORTFOLIO_FROM_EMAIL:Nikhil Portfolio <onboarding@resend.dev>}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

@@ -1,0 +1,10 @@
+# Render Blueprint — one Docker web service, frontend baked in.
+# Push this repo to GitHub, then: Render → New → Blueprint → pick the repo.
+services:
+  - type: web
+    name: nikhil-portfolio
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /actuator/health
+    autoDeploy: true
